@@ -8,22 +8,15 @@
 
   <main>
 
-    {{!-- 
+    {{!--
     {{#if result }}
     <h2> {{ result }} </h2>
     {{/if}} --}}
 
     <div class="row">
-      {{#each result}}
+      {{#each result letter=letter value=value}}
 
-        <input
-        type="text"
-        text=""
-        class="letter {{this}}"
-        maxlength="1"
-        disabled
-        value="T"
-      />
+      <input type="text" text="" class="letter {{value}}" maxlength="1" disabled value="{{letter}}" />
 
       {{/each}}
     </div>
