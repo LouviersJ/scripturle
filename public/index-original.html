@@ -1,0 +1,89 @@
+<div class="container">
+  <header>
+    <a href="/" class="logo"><i class="fas fa-bible"></i></a>
+    <h1>SCRIPTURLE</h1>
+    <a href="" class="settings"><i class="fas fa-cog"></i></a>
+  </header>
+
+  <main>
+    <div class="row">
+      <input
+        type="text"
+        text=""
+        class="letter correct"
+        maxlength="1"
+        disabled
+        value="T"
+      />
+      <input
+        type="text"
+        text=""
+        class="letter"
+        maxlength="1"
+        disabled
+        value="H"
+      />
+      <input
+        type="text"
+        text=""
+        class="letter"
+        maxlength="1"
+        disabled
+        value="U"
+      />
+      <input
+        type="text"
+        text=""
+        class="letter misplaced"
+        maxlength="1"
+        disabled
+        value="N"
+      />
+      <input
+        type="text"
+        text=""
+        class="letter"
+        maxlength="1"
+        disabled
+        value="D"
+      />
+      <input
+        type="text"
+        text=""
+        class="letter"
+        maxlength="1"
+        disabled
+        value="E"
+      />
+      <input
+        type="text"
+        text=""
+        class="letter"
+        maxlength="1"
+        disabled
+        value="R"
+      />
+    </div>
+    <div class="row">
+      <input type="text" text="" class="letter" maxlength="1" autofocus />
+      <input type="text" text="" class="letter" maxlength="1" />
+      <input type="text" text="" class="letter" maxlength="1" />
+      <input type="text" text="" class="letter" maxlength="1" />
+      <input type="text" text="" class="letter" maxlength="1" />
+      <input type="text" text="" class="letter" maxlength="1" />
+      <input type="text" text="" class="letter" maxlength="1" />
+    </div>
+
+    <div class="wordContainer">
+      <h2 class="guess"></h2>
+
+      <form action="/guess" method="post">
+        <p>
+          <input type="hidden" name="guess" id="guess" />
+        </p>
+
+        <input type="submit" value="Guess" />
+      </form>
+    </div>
+  </main>
+</div>

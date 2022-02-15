@@ -63,9 +63,22 @@ input.letter {
 }
 
 input.letter.correct {
-    background-color: #F25C5C;
+    background-color: #734124;
 }
 
 input.letter.misplaced {
     background-color: #5D768C;
+}
+
+input[type="submit"] {
+    display:block;
+    border: none;
+    outline: none;
+    margin: 2rem 0rem;
+    padding: 1rem;
+    width:100%;
+    font-size: 2rem;
+    color: #F2F2F2;
+    background-color: #3d3d3d;
+
 }
