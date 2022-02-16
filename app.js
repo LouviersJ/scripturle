@@ -22,16 +22,43 @@ app.post("/v1", (req, res)=> {
   // extract the guess value from the body
   const guess = req.body.guess.toUpperCase();
 
-  let result = []; // = computeResult();
 
-  if(guess === secretWord) {
-    result = ['correct', 'correct', 'correct','correct','correct','correct','correct'];
-  }
-  else {
-    result = ['correct', 'misplaced', 'incorrect','incorrect','incorrect','misplaced','misplaced'];
+  function computeResult(guess, secretWord) {
+    
+    let result = []
+    let answer = ''
+    
+    for ( let i = 0; i < 7; i++) {
+
+    if (guess[i] === secretWord[i]) {
+        answer = 'correct';
+    }
+
+    else if( secretWord.includes(guess[i]) ) {
+        answer = 'misplaced';
+    }
+
+    else {
+        answer = 'incorrect';
+        
+    }
+
+
+    result.push({letter:guess[i], status: answer}) 
+
+    }
+
+
+    return result;
   }
 
-  console.log(result);
+  let result = computeResult(guess, secretWord); // = computeResult();
+
+
+
+
+  console.log(secretWord);
+  //console.log(secretWord);
 
   // return the guess
   res.render('v1', {result: result} ) ;

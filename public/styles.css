@@ -21,10 +21,6 @@ body {
     justify-content: center;
 }
 
-.container {
-    
-}
-
 header {
     display: flex;
     align-items: center;
@@ -63,7 +59,7 @@ input.letter {
 }
 
 input.letter.correct {
-    background-color: #734124;
+    background-color: #24734c;
 }
 
 input.letter.misplaced {

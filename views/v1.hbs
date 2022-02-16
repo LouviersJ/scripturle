@@ -8,9 +8,12 @@
 
   <main>
 
-    {{!-- 
-    {{#if result }}
+
+  
+    {{!-- {{#if result }}
+
     <h2> {{ result }} </h2>
+
     {{/if}} --}}
 
     <div class="row">
@@ -19,13 +22,16 @@
         <input
         type="text"
         text=""
-        class="letter {{this}}"
+        class="letter {{status}}"
         maxlength="1"
         disabled
-        value="T"
+        value="{{letter}}"
       />
 
       {{/each}}
+
+
+
     </div>
     <div class="row">
       <input type="text" text="" class="letter" maxlength="1" autofocus />
