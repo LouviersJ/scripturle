@@ -24,7 +24,7 @@ letterInputs.forEach(input => input.addEventListener("keyup", (e)=> {
         }   
     }
     else {
-        if(count < 7 ) {
+        if(count < 8 ) {
             count++;
             word += input.value;
             //guessText.textContent = word;

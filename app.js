@@ -3,41 +3,47 @@ let path = require("path");
 let app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "hbs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/v1', (req, res)=> {
-  res.render('v1');
+app.get("/v1", (req, res) => {
+  res.render("v1");
 });
 
-app.post("/v1", (req, res)=> {
-
-  let secretWord = "hebrews".toUpperCase();
+app.post("/v1", (req, res) => {
+  let secretWord = "HEBREWS".toUpperCase();
 
   // extract the guess value from the body
   const guess = req.body.guess.toUpperCase();
 
-  let result = []; // = computeResult();
-
-  if(guess === secretWord) {
-    result = ['correct', 'correct', 'correct','correct','correct','correct','correct'];
-  }
-  else {
-    result = ['correct', 'misplaced', 'incorrect','incorrect','incorrect','misplaced','misplaced'];
-  }
+  let result = computeResult(guess, secretWord);
 
   console.log(result);
 
   // return the guess
-  res.render('v1', {result: result} ) ;
-
+  res.render("v1", {result:result});
 });
 
+function computeResult(guess, secretWord) {
+  let result = [];
+
+  for (i = 0; i < 7; i++) {
+    if (guess[i] == secretWord[i]) {
+      result.push({letter:guess[i], state:"correct"});
+    } else if (secretWord.includes(guess[i])) {
+      result.push({letter:guess[i], state:"misplaced"});
+    } else {
+      result.push({letter:guess[i], state:"incorrect"});
+    }
+  }
+
+  return result;
+}
 
 /* EXAMPLE */
 
@@ -67,9 +73,7 @@ app.get("/example/:age", (req, res) => {
   res.send(page);
 });
 
-
-app.post('/example', (req,res) => {
-
+app.post("/example", (req, res) => {
   let age = req.body.age;
 
   if (age > mark.age) {
@@ -90,9 +94,7 @@ app.post('/example', (req,res) => {
   //res.render('index', ageSentence);
 
   res.send(page);
-
 });
-
 
 const port = process.env.PORT || 3000;
 const hostname = process.env.hostname || "localhost";
