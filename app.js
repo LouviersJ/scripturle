@@ -24,11 +24,15 @@ app.post("/v1", (req, res)=> {
 
   let result = []; // = computeResult();
 
-  if(guess === secretWord) {
-    result = ['correct', 'correct', 'correct','correct','correct','correct','correct'];
-  }
-  else {
-    result = ['correct', 'misplaced', 'incorrect','incorrect','incorrect','misplaced','misplaced'];
+  for  (let i = 0; i < 7; i++) {
+    if (guess[i] === secretWord[i]) {
+      result.push(  {pop: 'correct',
+                    letter: guess[i]})
+    }
+    else {
+      result.push(  {pop: 'incorrect',
+                    letter: guess[i]})
+    }
   }
 
   console.log(result);
