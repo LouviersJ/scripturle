@@ -1,6 +1,9 @@
 let express = require("express");
 let path = require("path");
 let app = express();
+var expressSession = require('express-session');
+const { Router } = require("express");
+const res = require("express/lib/response");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -10,6 +13,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
+
+app.use(expressSession({
+  resave: false,
+  saveUninitialized: false,
+  secret: "super $secret phrase 123"
+  cookie: {
+    maxAge: 1000*60*10
+  }
+}));
 
 app.get('/v1', (req, res)=> {
   res.render('v1');
