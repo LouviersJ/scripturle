@@ -7,7 +7,7 @@ def find_words(path, num_letters):
     lines = file.readlines()
 
     all_words = {}
-
+    
     for line in lines:
         for word in line.split():
             clear_word = word.translate(str.maketrans('', '', string.punctuation))
