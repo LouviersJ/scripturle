@@ -1,5 +1,7 @@
 let express = require(`express`);
 let path = require("path");
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 let app = express();
 
 // view engine setup
@@ -60,20 +62,32 @@ app.post("/v2", (req, res)=> {
 
   // extract the guess value from the body
   const guess = req.body.guess.toUpperCase();
+  let results = []
+  let result1 = computeResult();
 
-  let result = []; // = computeResult();
+  function computeResult() {
+    
+    let result1 = [];
 
-  if(guess === secretWord) {
-    result = ['correct', 'correct', 'correct','correct','correct','correct','correct'];
+    for (let letter = 0; letter < 7; letter++) {
+      if (guess[letter] === secretWord[letter]) {
+        answer = 'correct';
+      }
+      else if (secretWord.includes(guess[letter])){
+        answer = 'misplaced';
+      }
+      else {
+        answer = 'incorrect';
+      }
+      result1.push({letter: guess[letter], status: answer});
+    }
+    results.push(result1);
+    return result1;
   }
-  else {
-    result = ['correct', 'misplaced', 'incorrect','incorrect','incorrect','misplaced','misplaced'];
-  }
-
-  console.log(result);
+  console.log(results);
 
   // return the guess
-  res.render('v1', {result: result} ) ;
+  res.render('v2', { results : results} ) ;
 
 });
 
